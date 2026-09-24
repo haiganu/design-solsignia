@@ -1,0 +1,11 @@
+/* Nexum (plum). Import AFTER vivid-theme.css, in the nexum repo only.
+   White text on primary: 6.3:1. Only these 7 values differ between apps. */
+@theme {
+  --color-primary: #A21CAF;
+  --color-primary-hover: #86198F;
+  --color-primary-soft: #FDF4FF;
+  --color-primary-on-soft: #86198F;
+  --color-sidebar: #4A044E;
+  --color-sidebar-fg: #FAE8FF;
+  --color-sidebar-muted: #F0ABFC;
+}

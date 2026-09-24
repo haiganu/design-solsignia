@@ -1,0 +1,11 @@
+/* Postura (indigo). Import AFTER vivid-theme.css, in the postura repo only.
+   White text on primary: 7.9:1. Only these 7 values differ between apps. */
+@theme {
+  --color-primary: #4338CA;
+  --color-primary-hover: #3730A3;
+  --color-primary-soft: #EEF2FF;
+  --color-primary-on-soft: #3730A3;
+  --color-sidebar: #1E1B4B;
+  --color-sidebar-fg: #E0E7FF;
+  --color-sidebar-muted: #A5B4FC;
+}

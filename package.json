@@ -1,0 +1,13 @@
+{
+  "name": "@solsignia/design",
+  "version": "1.0.0",
+  "description": "Solsignia Vivid design system: tokens, brand assets, rules and reference screens.",
+  "license": "UNLICENSED",
+  "files": ["DESIGN.md", "tokens", "brand", "snippets", "references"],
+  "exports": {
+    "./tokens/*": "./tokens/*",
+    "./brand/*": "./brand/*",
+    "./snippets/*": "./snippets/*",
+    "./DESIGN.md": "./DESIGN.md"
+  }
+}

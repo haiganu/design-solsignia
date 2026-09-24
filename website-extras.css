@@ -1,0 +1,53 @@
+/* Solsignia "Vivid" — website-only additions (www + product landing pages).
+   Import AFTER vivid-theme.css. Apps do not import this file. */
+
+@theme {
+  /* Page backgrounds */
+  --color-night: #0B0A24;          /* deepest background: stats strips, footer, dark sections */
+  --color-night-2: #15123D;        /* mid stop in hero gradients */
+  --color-night-3: #2A2466;        /* light stop in the www hero gradient */
+  --color-night-glow: #3B2F8F;     /* light stop in the final CTA gradient */
+
+  /* Statement colour: the logo yellow, used ONLY for primary CTAs and headline highlights on the website */
+  --color-statement: #FFF200;
+  --color-statement-fg: #1E1B4B;   /* text on statement buttons */
+
+  /* Text on dark */
+  --color-on-dark: #FFFFFF;
+  --color-on-dark-2: #D5D8F5;      /* hero body text */
+  --color-on-dark-3: #C7D2FE;      /* secondary text on dark */
+  --color-on-dark-4: #A5B4FC;      /* footer headings, microcopy */
+
+  /* Product chapter gradients: primary -> dark (primaries are in tokens/products/*.css) */
+  --color-postura-dark: #1E1B4B;
+  --color-pharus-dark: #083344;    --color-pharus-night: #04161D;
+  --color-nexum-dark: #4A044E;     --color-nexum-night: #1A0620;
+  --color-vigil-dark: #431407;     --color-vigil-night: #1C0A04;
+
+  /* Type scale for marketing pages (desktop / mobile handled with responsive classes) */
+  --text-hero: 104px;  --text-hero--line-height: 1;
+  --text-hero-m: 38px; --text-hero-m--line-height: 1.05;
+  --text-chapter: 72px; --text-chapter--line-height: 1.02;
+  --text-section: 56px; --text-section--line-height: 1.08;
+  --text-lead: 22px;   --text-lead--line-height: 1.55;
+  --text-reading: 18px; --text-reading--line-height: 1.75;
+}
+
+/* Sun effect behind the logo in heroes. Decorative only (aria-hidden). */
+@layer components {
+  .sun-rays {
+    position: absolute; left: 50%; width: 1800px; height: 1800px; margin-left: -900px;
+    background: repeating-conic-gradient(from 0deg, rgb(255 242 0 / 0.10) 0deg 4deg, transparent 4deg 15deg);
+    -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 62%);
+            mask-image: radial-gradient(circle, #000 0%, transparent 62%);
+    animation: sol-spin 160s linear infinite; pointer-events: none;
+  }
+  .sun-glow {
+    position: absolute; left: 50%; border-radius: 9999px; pointer-events: none;
+    background: radial-gradient(circle, rgb(255 222 23 / 0.55) 0%, rgb(255 160 40 / 0.20) 35%, transparent 68%);
+    animation: sol-pulse 8s ease-in-out infinite;
+  }
+  @keyframes sol-spin { to { transform: rotate(360deg); } }
+  @keyframes sol-pulse { 0%, 100% { opacity: .55; } 50% { opacity: .85; } }
+  @media (prefers-reduced-motion: reduce) { .sun-rays, .sun-glow { animation: none; } }
+}

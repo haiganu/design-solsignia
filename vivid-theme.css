@@ -1,0 +1,112 @@
+/* Solsignia "Vivid" theme — Tailwind CSS v4 (CSS-first config)
+   Light theme only for v1. Dark mode is planned for after launch: it will be a
+   second set of values for these same names, so components must use names only.
+   Import once in app/globals.css, right after `@import "tailwindcss";`
+   Fonts are loaded with next/font (see DESIGN.md §3.5) and exposed as
+   --font-atkinson and --font-atkinson-mono on <html>. */
+
+@theme inline {
+  --font-sans: var(--font-atkinson), "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-atkinson-mono), ui-monospace, "Cascadia Mono", monospace;
+}
+
+@theme {
+  /* Base */
+  --color-canvas: #F4F5FB;
+  --color-surface: #FFFFFF;
+  --color-subtle: #F7F8FC;
+  --color-border: #E4E7F2;
+  --color-border-strong: #D5D9E8;
+  --color-divider: #F1F2F8;
+  --color-ink: #0F172A;        /* 17.9:1 on white */
+  --color-ink-2: #475569;      /* 7.6:1  — secondary text */
+  --color-ink-3: #64748B;      /* 4.8:1  — captions only, never below 13px */
+
+  /* Sidebar (dark) */
+  --color-sidebar: #1E1B4B;
+  --color-sidebar-fg: #E0E7FF;
+  --color-sidebar-muted: #A5B4FC;
+  --color-sidebar-active: rgb(255 255 255 / 0.14);
+
+  /* Primary — anything clickable */
+  --color-primary: #4338CA;    /* white text 7.9:1 */
+  --color-primary-hover: #3730A3;
+  --color-primary-soft: #EEF2FF;
+  --color-primary-on-soft: #3730A3;
+
+  /* Brand mark (logo only, never UI) — from Artboard_3.svg */
+  --color-mark-center: #FFF200;
+  --color-mark-sides: #FFDE17;
+  --color-mark-outline: #BE1E2D;
+
+  /* Score categories: strong (bars, dots, icon tiles) · tint (tag bg) · fg (tag text) */
+  --color-cat-device: #2563EB;   --color-cat-device-tint: #DBEAFE;   --color-cat-device-fg: #1E40AF;
+  --color-cat-browser: #7C3AED;  --color-cat-browser-tint: #EDE9FE;  --color-cat-browser-fg: #5B21B6;
+  --color-cat-auth: #DB2777;     --color-cat-auth-tint: #FCE7F3;     --color-cat-auth-fg: #9D174D;
+  --color-cat-network: #0D9488;  --color-cat-network-tint: #CCFBF1;  --color-cat-network-fg: #115E59;
+  --color-cat-data: #D97706;     --color-cat-data-tint: #FEF3C7;     --color-cat-data-fg: #92400E;
+  --color-cat-aware: #16A34A;    --color-cat-aware-tint: #DCFCE7;    --color-cat-aware-fg: #166534;
+
+  /* Status: text · dot · tint · fg-on-tint */
+  --color-success: #047857; --color-success-dot: #10B981; --color-success-tint: #D1FAE5; --color-success-fg: #065F46;
+  --color-warning: #B45309; --color-warning-dot: #F59E0B; --color-warning-tint: #FEF3C7; --color-warning-fg: #92400E;
+  --color-danger:  #BE123C; --color-danger-dot:  #E11D48; --color-danger-tint:  #FFE4E6; --color-danger-fg:  #9F1239;
+  --color-neutral: #475569; --color-neutral-dot: #94A3B8; --color-neutral-tint: #F1F5F9; --color-neutral-fg: #334155;
+
+  /* Score ring on primary background */
+  --color-ring-good: #6EE7B7;
+
+  /* Nav icon tiles (sidebar and rail) */
+  --color-nav-overview: #6366F1;
+  --color-nav-actions: #E11D48;
+  --color-nav-devices: #0284C7;
+  --color-nav-compliance: #7C3AED;
+  --color-nav-reports: #059669;
+  --color-nav-badge: #D97706;
+  --color-nav-count: #FB7185;       --color-nav-count-fg: #4C0519;
+
+  /* Solsignia app switcher dots */
+  --color-app-postura: #818CF8;
+  --color-app-pharus: #22D3EE;
+  --color-app-nexum: #E879F9;
+  --color-app-vigil: #FB923C;
+
+  /* Avatar, search field, mobile active tab */
+  --color-avatar: #F472B6;          --color-avatar-fg: #500724;
+  --color-field-quiet: #EEF0F8;
+  --color-tab-active: #E0E7FF;
+
+  /* Text on primary (score card, mobile header) */
+  --color-on-primary: #FFFFFF;
+  --color-on-primary-2: #E0E7FF;
+  --color-on-primary-3: #C7D2FE;
+
+  /* Extra tint used for the Devices KPI */
+  --color-sky-tint: #E0F2FE;        --color-sky-fg: #0369A1;
+
+  /* Field borders: 3:1 against white (WCAG 1.4.11) */
+  --color-field-border: #7C8699;
+
+  /* Overlays */
+  --color-scrim: rgb(15 23 42 / 0.55);
+  --color-toast: #1E1B4B;           --color-toast-fg-2: #C7D2FE;
+
+  /* Radius */
+  --radius-tag: 8px;
+  --radius-btn: 10px;
+  --radius-tile: 12px;
+  --radius-card: 16px;
+
+  /* Type scale (size / line-height) */
+  --text-display: 30px;  --text-display--line-height: 1.2;
+  --text-h2: 18px;       --text-h2--line-height: 1.35;
+  --text-body: 16px;     --text-body--line-height: 1.55;
+  --text-ui: 15px;       --text-ui--line-height: 1.4;
+  --text-label: 13px;    --text-label--line-height: 1.35;
+  --text-metric: 34px;   --text-metric--line-height: 1;
+}
+
+@layer base {
+  html { font-family: var(--font-sans); color: var(--color-ink); background: var(--color-canvas); -webkit-font-smoothing: antialiased; }
+  .tabular { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+}

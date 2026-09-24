@@ -1,0 +1,11 @@
+/* Vigil (ember orange). Import AFTER vivid-theme.css, in the vigil repo only.
+   White text on primary: 5.2:1. Only these 7 values differ between apps. */
+@theme {
+  --color-primary: #C2410C;
+  --color-primary-hover: #9A3412;
+  --color-primary-soft: #FFF7ED;
+  --color-primary-on-soft: #9A3412;
+  --color-sidebar: #431407;
+  --color-sidebar-fg: #FFEDD5;
+  --color-sidebar-muted: #FDBA74;
+}

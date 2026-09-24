@@ -1,0 +1,11 @@
+/* Pharus (deep teal). Import AFTER vivid-theme.css, in the pharus repo only.
+   White text on primary: 5.4:1. Only these 7 values differ between apps. */
+@theme {
+  --color-primary: #0E7490;
+  --color-primary-hover: #155E75;
+  --color-primary-soft: #ECFEFF;
+  --color-primary-on-soft: #155E75;
+  --color-sidebar: #083344;
+  --color-sidebar-fg: #CFFAFE;
+  --color-sidebar-muted: #67E8F9;
+}
