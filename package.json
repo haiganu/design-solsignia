@@ -1,13 +1,30 @@
 {
   "name": "@solsignia/design",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Solsignia Vivid design system: tokens, brand assets, rules and reference screens.",
   "license": "UNLICENSED",
-  "files": ["DESIGN.md", "tokens", "brand", "snippets", "references"],
+  "files": [
+    "DESIGN.md",
+    "tokens",
+    "brand",
+    "snippets",
+    "references"
+  ],
   "exports": {
-    "./tokens/*": "./tokens/*",
-    "./brand/*": "./brand/*",
-    "./snippets/*": "./snippets/*",
-    "./DESIGN.md": "./DESIGN.md"
+    "./DESIGN.md": "./DESIGN.md",
+    "./tokens/vivid-theme.css": "./tokens/vivid-theme.css",
+    "./tokens/website-extras.css": "./tokens/website-extras.css",
+    "./tokens/vivid.preset.js": "./tokens/vivid.preset.js",
+    "./tokens/products/postura.css": "./tokens/products/postura.css",
+    "./tokens/products/pharus.css": "./tokens/products/pharus.css",
+    "./tokens/products/nexum.css": "./tokens/products/nexum.css",
+    "./tokens/products/vigil.css": "./tokens/products/vigil.css",
+    "./brand/mark.svg": "./brand/mark.svg",
+    "./brand/mark-small.svg": "./brand/mark-small.svg",
+    "./brand/favicon.svg": "./brand/favicon.svg",
+    "./brand/badges/badge-postura.svg": "./brand/badges/badge-postura.svg",
+    "./brand/badges/badge-vigil.svg": "./brand/badges/badge-vigil.svg",
+    "./snippets/SolsigniaMark.tsx": "./snippets/SolsigniaMark.tsx",
+    "./snippets/CLAUDE.md": "./snippets/CLAUDE.md"
   }
 }

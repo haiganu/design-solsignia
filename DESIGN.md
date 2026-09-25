@@ -51,6 +51,7 @@ This is the single source of truth for how every Solsignia product looks and beh
 
 Files:
 - `tokens/vivid-theme.css`: Tailwind v4 `@theme`. Import it everywhere.
+- **Note on npm install:** `npm install github:haiganu/design-solsignia` installs the package but Tailwind/PostCSS cannot resolve CSS files via the Node.js `exports` field at build time. The recommended approach is to copy the token CSS files into the project (e.g. `styles/design/`) and import them locally, or inline them into `globals.css`. Do not rely on `@import "@solsignia/design/tokens/..."` in CSS files that Tailwind processes.
 - `tokens/products/<product>.css`: the 7 values that make an app Postura, Pharus, Nexum or Vigil. Import one, after the theme.
 - `tokens/website-extras.css`: website and landing pages only.
 - `tokens/vivid.preset.js`: the Tailwind v3 equivalent, using the same class names.
@@ -111,7 +112,7 @@ Priority is always a dot plus a word: High (danger), Medium (warning), Low (neut
 
 ### 3.5 Type
 
-- **Font:** Atkinson Hyperlegible Next (400/500/600/700) for everything, and Atkinson Hyperlegible Mono (400/500) for numbers: scores, times, counts, codes. Load both with `next/font/google` as `--font-atkinson` and `--font-atkinson-mono`, with the `latin-ext` subset.
+- **Font:** Atkinson Hyperlegible Next and Atkinson Hyperlegible Mono for numbers: scores, times, counts, codes. Both are variable fonts — load with `weight: "variable"` (not an array of weights), subsets `['latin', 'latin-ext']`, variables `--font-atkinson` and `--font-atkinson-mono`. Using an array of weights causes a Next.js build error.
 - **App scale:**
   - display 30/700
   - h2 18/700
@@ -291,6 +292,52 @@ Priority is always a dot plus a word: High (danger), Medium (warning), Low (neut
 | `references/website/` | homepage (desktop and phone), four landing pages (desktop and phone), legal page, resources index, guide page |
 
 The screens show Postura. Other apps use the same layouts with their own values from `tokens/products/`.
+
+## 15. Internationalisation (i18n)
+
+**Supported languages:** en, ro, de, fr, it.
+**Register:** formal — dvs. (Romanian), Sie (German), vous (French), Lei (Italian).
+
+### Language preference — how it is stored and read
+
+| Source | Who it applies to | Priority |
+|---|---|---|
+| `?lang=` URL param | Everyone | 1 — highest |
+| `.solsignia.com` cookie `solsignia-lang` | Everyone | 2 |
+| `user_profiles.preferred_language` | Authenticated users | 3 (async, updates cookie) |
+| Browser `Accept-Language` header | Everyone | 4 |
+| Default `'en'` | Everyone | 5 — lowest |
+
+### Cookie spec
+
+- Name: `solsignia-lang`
+- Domain: `.solsignia.com` (with leading dot — shared across all subdomains)
+- Max-age: 1 year
+- SameSite: Lax
+
+### Shared functions (in each repo's `lib/i18n.ts`)
+
+- `detectLang()` — reads URL param → cookie → browser header → 'en'
+- `writeLang(lang)` — writes to cookie and localStorage simultaneously
+- `syncLangFromProfile(supabase)` — reads DB, updates cookie if different; call once on authenticated page load
+- `saveLangToProfile(supabase, lang)` — fire-and-forget DB update; call when user changes language
+
+### Nexum exception
+
+Nexum has no accounts. Use `detectLang()` and `writeLang()` only. Never call `syncLangFromProfile` or `saveLangToProfile`.
+
+### Language switcher
+
+- Shows the current language code and a globe icon (Lucide `Globe`, 18px).
+- Selecting a language: calls `writeLang()` immediately (instant UI), then `saveLangToProfile()` if authenticated.
+- Minimum tap target: 44px.
+- Available in the desktop header and the mobile menu sheet on every product.
+
+### Translation completeness
+
+Every i18n key must have translations for all five languages before the Vivid prompt runs.
+Never translate legal text (privacy policy, terms of service) — restyle only.
+Layouts must work at German lengths — no fixed-width labels anywhere.
 
 ## 14. Changing the system
 
