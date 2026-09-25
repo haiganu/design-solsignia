@@ -1,3 +1,8 @@
+## 1.0.3 — September 2026
+- DESIGN.md §3.5: added note on Atkinson Hyperlegible font registration name
+  difference between Next.js 14 (Atkinson_Hyperlegible) and Next.js 15+
+  (Atkinson_Hyperlegible_Next).
+
 ## 1.0.2 — September 2026
 - Fixed `exports` field in `package.json` — replaced wildcard glob with explicit subpath entries (Node.js does not resolve glob patterns in `exports`).
 - Fixed font loading instruction in §3.5 — Atkinson Hyperlegible Next and Mono are variable fonts; use `weight: "variable"`, not an array of weights.

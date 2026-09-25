@@ -113,6 +113,12 @@ Priority is always a dot plus a word: High (danger), Medium (warning), Low (neut
 ### 3.5 Type
 
 - **Font:** Atkinson Hyperlegible Next and Atkinson Hyperlegible Mono for numbers: scores, times, counts, codes. Both are variable fonts — load with `weight: "variable"` (not an array of weights), subsets `['latin', 'latin-ext']`, variables `--font-atkinson` and `--font-atkinson-mono`. Using an array of weights causes a Next.js build error.
+- **Font name varies by Next.js version.** In Next.js 14 and earlier the font is
+  registered as `Atkinson_Hyperlegible` (without `_Next`). In Next.js 15+ it is
+  `Atkinson_Hyperlegible_Next`. Check which name is accepted by running
+  `import { Atkinson_Hyperlegible_Next } from 'next/font/google'` — if the build
+  fails with "Unknown font", use `Atkinson_Hyperlegible` instead. Both load the
+  same typeface; only the registration name differs.
 - **App scale:**
   - display 30/700
   - h2 18/700
